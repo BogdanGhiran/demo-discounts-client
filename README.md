@@ -27,3 +27,7 @@ It was built to mock a kind of a shopping cart.
 Under the "items" list there is an input for the discount code that is submitted via the Use Code button
 
 There's not much logic behind it, but the total cost is lowered if the code used last has worked, and it stays at 31.5 otherwise.
+
+
+# Deployment
+Every time the main branch receives an update(commit) the [Azure Pipeline](https://dev.azure.com/demo-org-bg/demo-discounts/_build?definitionId=2) pipeline will pick up the changes, rebuild and test the service, and if that is successful, it will deploy the new service version at [demo-discounts-client.gab16.com](https://demo-discounts-client.gab16.com/status)
