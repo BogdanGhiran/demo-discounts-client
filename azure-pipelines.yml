@@ -1,0 +1,42 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  # Replace this with your variable group name
+  - group: variable-group  
+
+steps:
+### 1) Clone Azure DevOps "demo-discounts-client" repository
+- script: |
+    echo "Cloning Azure DevOps demo-discounts-client repository..."
+    git clone https://$(AZURE_DEVOPS_PAT)@$(AZURE_DEVOPS_DEMO_DISCOUNTS_CLIENT_REPO_URL) demo-discounts-client
+  displayName: 'Clone Azure DevOps FE Repository'
+
+### 2) Check for large files (> 25 MB) in the client repo
+- script: |
+    cd demo-discounts-client
+    find . -type f -size +25M | grep -q . && echo "Error: Repository contains files larger than 25 MB. Failing pipeline because this will not work for typical deployments." && exit 1 || echo "No large files found."
+  displayName: 'Check for Large Files in FE Repository'
+
+### 3) Commit and Push the client repo to GitHub
+- script: |
+    cd demo-discounts-client
+
+    echo "Configuring Git user information for client repository..."
+    git config user.email "$(GITHUB_EMAIL)"
+    git config user.name "Azure DevOps Pipeline"
+
+    echo "Adding GitHub as remote..."
+    git remote add github https://$(GITHUB_TOKEN)@$(GITHUB_DEMO_DISCOUNTS_CLIENT_REPO)
+
+    echo "Fetching and rebasing changes from GitHub (if any exist)..."
+    # If you want to preserve or merge what's already in GitHub:
+    git pull github master --rebase
+
+    echo "Pushing the local Azure DevOps code to GitHub..."
+    # Force-push if you really want to overwrite GitHub with the Azure DevOps repo
+    git push -u github master --force
+  displayName: 'Copy Code to GitHub (demo-discounts-client)'
