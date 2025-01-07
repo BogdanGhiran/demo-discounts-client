@@ -15,16 +15,16 @@ npm create vite@latest my-vue-app -- --template vue
 Open the project in Visual Studio Code and run the "npm run dev" command. 
 By default, it tries to create the signalR connection using the string located in the .env file when doing so, and the .env.production file contains the url for the prod app
 
-#Usage 
-##The interface is split in half: 
-###On the left side, an "Admin" mock, that has two buttons:
+# Usage 
+The interface is split in half: 
+### On the left side, an "Admin" mock, that has two buttons:
 
 Clicking Generate Codes generates a few codes based on the length and count parameters
 
 Clicking Generate & Display Codes replies with the generated codes. This was not asked as part of requirements, and is an extra endpoint to use for debugging/testing.
 The Generate & Display button will also generate buttons for quick usage of codes
 
-###The right side displays a "Client" mock has a code input:
+### The right side displays a "Client" mock has a code input:
 It was built to mock a kind of a shopping cart. 
 Under the "items" list there is an input for the discount code that is submitted via the Use Code button
 
