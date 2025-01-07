@@ -1,5 +1,5 @@
 trigger:
-- master
+- main
 
 pool:
   name: Default  # The name of the pool with your self-hosted agent
@@ -53,9 +53,9 @@ steps:
 
     echo "Fetching and rebasing changes from GitHub (if any exist)..."
     # If you want to preserve or merge what's already in GitHub:
-    git pull github master --rebase
+    git pull github main --rebase
 
     echo "Pushing the local Azure DevOps code to GitHub..."
     # Force-push if you really want to overwrite GitHub with the Azure DevOps repo
-    git push -u github master --force
+    git push -u github main --force
   displayName: 'Copy Code to GitHub (demo-discounts-client)'
