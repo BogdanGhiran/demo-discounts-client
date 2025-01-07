@@ -16,10 +16,29 @@ steps:
   displayName: 'Clone Azure DevOps FE Repository'
 
 ### 2) Check for large files (> 25 MB) in the client repo
-- script: |
-    cd demo-discounts-client
-    find . -type f -size +25M | grep -q . && echo "Error: Repository contains files larger than 25 MB. Failing pipeline because this will not work for typical deployments." && exit 1 || echo "No large files found."
+- task: PowerShell@2
   displayName: 'Check for Large Files in FE Repository'
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Navigate into your cloned folder (assuming it's called demo-discounts-client)
+      cd demo-discounts-client
+
+      $limit = 25MB  # or 25MB = 25 * 1024 * 1024
+      Write-Host "Checking for files larger than $limit..."
+
+      $largeFiles = Get-ChildItem -Recurse | Where-Object { $_.Length -gt $limit }
+      if ($largeFiles) {
+        Write-Host "Error: The following files exceed 25 MB:"
+        $largeFiles | ForEach-Object {
+          Write-Host $_.FullName "(`$($_.Length) bytes`)"
+        }
+        # Fail the step/pipeline
+        exit 1
+      }
+      else {
+        Write-Host "No files exceed 25 MB. All good!"
+      }
 
 ### 3) Commit and Push the client repo to GitHub
 - script: |
