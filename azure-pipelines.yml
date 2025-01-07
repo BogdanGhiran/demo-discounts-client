@@ -2,7 +2,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: Default  # The name of the pool with your self-hosted agent
 
 variables:
   # Replace this with your variable group name
