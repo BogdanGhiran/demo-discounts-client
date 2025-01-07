@@ -1,9 +1,13 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import AdminComponent from './components/AdminComponent.vue'
+import ClientComponent from './components/ClientComponent.vue';
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <div class="row" style="width: 100vw;">
+    <AdminComponent class="col-6 col-md-6 content-container"/>
+    <ClientComponent class="col-6 col-md-6 content-container"/>  
+  </div>
 </template>
 
 <style scoped>
@@ -18,5 +22,17 @@ import HelloWorld from './components/HelloWorld.vue'
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.content-container {
+  height: 100vh;
+  border-radius: 8px;
+  color: #000069;
+  background-color: #CacaFa12;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 0 8px #00006969;
+  border: 1px solid rgba(0, 0, 105, 0.2);
+  background-color: #e0f7f796;
+  padding: 20px;
+  border-radius: 10px;
 }
 </style>
