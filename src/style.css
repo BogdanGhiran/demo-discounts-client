@@ -1,0 +1,33 @@
+
+.scrollable {
+  max-height: 100vh;
+  overflow-y: auto;
+  /* Makes content scrollable */
+  padding-right: 20px;
+  /* Adds space to the right for scroll */
+  box-sizing: border-box;
+}
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.content-container {
+  height: 100vh;
+  border-radius: 8px;
+  color: #000069;
+  background-color: #CacaFa12;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 0 8px #00006969;
+  border: 1px solid rgba(0, 0, 105, 0.2);
+  background-color: #e0f7f796;
+  padding: 20px;
+  border-radius: 10px;
+}

@@ -5,8 +5,8 @@ import ClientComponent from './components/ClientComponent.vue';
 
 <template>
   <div class="row" style="width: 100vw;">
-    <AdminComponent class="col-6 col-md-6 content-container"/>
-    <ClientComponent class="col-6 col-md-6 content-container"/>  
+    <AdminComponent class="col-6 col-md-6 content-container scrollable"/>
+    <ClientComponent class="col-6 col-md-6 content-container scrollable"/>  
   </div>
 </template>
 

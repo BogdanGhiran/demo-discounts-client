@@ -1,5 +1,29 @@
-# Vue 3 + Vite
+# Introduction 
+The is a Vue Js Project with a deployed at https://demo-discounts hub located at https://demo-discounts-client.gab16.com/ it has capabilities for calling the generating codes and use code functionalities on the backend located at https://demo-discounts.gab16.com/ 
+Created using the vite vue template(command below)
+npm create vite@latest my-vue-app -- --template vue
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+# Getting Started
+
+1.	Installation process - open a terminal at the repo location, run npm install, run npm run dev for the dev build or npm run build for the prod build
+2.	Software dependencies - make sure to have npm installed
+
+# Build and Test
+Open the project in Visual Studio Code and run the "npm run dev" command. 
+By default, it tries to create the signalR connection using the string located in the .env file when doing so, and the .env.production file contains the url for the prod app
+
+#Usage 
+##The interface is split in half: 
+###On the left side, an "Admin" mock, that has two buttons:
+
+Clicking Generate Codes generates a few codes based on the length and count parameters
+
+Clicking Generate & Display Codes replies with the generated codes. This was not asked as part of requirements, and is an extra endpoint to use for debugging/testing.
+The Generate & Display button will also generate buttons for quick usage of codes
+
+###The right side displays a "Client" mock has a code input:
+It was built to mock a kind of a shopping cart. 
+Under the "items" list there is an input for the discount code that is submitted via the Use Code button
+
+There's not much logic behind it, but the total cost is lowered if the code used last has worked, and it stays at 31.5 otherwise.
