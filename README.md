@@ -1,6 +1,8 @@
 # Introduction 
-The is a Vue Js Project with a deployed at https://demo-discounts hub located at https://demo-discounts-client.gab16.com/ it has capabilities for calling the generating codes and use code functionalities on the backend located at https://demo-discounts.gab16.com/ 
-Created using the vite vue template(command below)
+The is a Vue Js Project with a deployed at https://demo-discounts-client.gab16.com with a hub located at
+It has capabilities for calling the "generate codes" and "use code" functionalities on the backend located at https://demo-discounts.gab16.com/ 
+Created using the vite vue template(command )
+
 npm create vite@latest my-vue-app -- --template vue
 
 
@@ -30,4 +32,4 @@ There's not much logic behind it, but the total cost is lowered if the code used
 
 
 # Deployment
-Every time the main branch receives an update(commit) the [Azure Pipeline](https://dev.azure.com/demo-org-bg/demo-discounts/_build?definitionId=2) pipeline will pick up the changes, rebuild and test the service, and if that is successful, it will deploy the new service version at [demo-discounts-client.gab16.com](https://demo-discounts-client.gab16.com/status)
+Every time the main branch receives an update(commit) the [Azure Pipeline](https://dev.azure.com/demo-org-bg/demo-discounts/_build?definitionId=2) will pick up the changes, rebuild the service, and if that is successful, copy it over to github, where a cloudflare page will deploy the new service version at [demo-discounts-client.gab16.com](https://demo-discounts-client.gab16.com/status)
